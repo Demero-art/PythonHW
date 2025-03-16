@@ -35,17 +35,13 @@ def test_delete_symbol_positive(input_str, symbol, expected):
         assert string_utils.delete_symbol(input_str, symbol) == expected
 
 @pytest.mark.positive
-@pytest.mark.parametrize("string: str, symbol: str", [
+@pytest.mark.parametrize("input_str, expected", [
     ("Tutu", "T"),
-    ("Ruri", "i"),
-    ("python2", "3"),
+    ("Ruri No", "i"),
+    ("python2", "2"),
 ])
-def contains(string: str, symbol: str) -> bool:
-    res = False
-    try:
-        res = string.index(symbol) > -1
-    except ValueError:
-        pass
+def test_contains_positive(input_str, expected):
+    assert string_utils.contains(input_str, expected)
 
 
 #negative
@@ -84,13 +80,9 @@ def test_delete_symbol_negative(input_str, symbol, expected):
 
 
 @pytest.mark.negative
-@pytest.mark.parametrize("string: str, symbol: str", [
+@pytest.mark.parametrize("input_str, expected", [
     ("Tutu", ""),
-    ("Ruri", "None"),
+    ("154875214 A23", ""),
 ])
-def contains(string: str, symbol: str) -> bool:
-    res = False
-    try:
-        res = string.index(symbol) > -1
-    except ValueError:
-        pass
+def test_contains_negative(input_str, expected):
+    assert string_utils.contains(input_str, expected)
