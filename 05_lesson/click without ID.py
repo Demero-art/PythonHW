@@ -10,8 +10,7 @@ driver.get("http://uitestingplayground.com/dynamicid")
 try:
     # Ожидать появления кнопки на странице
     WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.ID, "button"))
-    )
+        EC.presence_of_element_located((By.ID, "button")))
 
     # Клик по синей кнопке
     blue_button = driver.find_element(By.CSS_SELECTOR, '#button')

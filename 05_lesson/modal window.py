@@ -10,8 +10,7 @@ driver.get("http://the-internet.herokuapp.com/entry_ad")
 try:
     # 2 Очень сильно жду появления модального окна T____T
     WebDriverWait(driver, 10).until(
-        EC.visibility_of_element_located((By.ID, "modal"))
-    )
+        EC.visibility_of_element_located((By.ID, "modal")))
 
     # 3: Наконец-то жму на кнопку Close =__=
     close_button = (driver.find_element
