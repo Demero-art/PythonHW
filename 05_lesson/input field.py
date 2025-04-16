@@ -12,14 +12,14 @@ try:
     input_field = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.TAG_NAME, "input")))
 
-    # Шаг 3: Ввожу текстом "1000"
-    input_field.send_keys("1000")
+    # Шаг 3: Ввод текстом "Sky"
+    input_field.send_keys("Sky")
 
     # Шаг 4: Почистить с clear
     input_field.clear()
 
-    # Шаг 5: Вводимс текстом "999" в пропылесосенное поле
-    input_field.send_keys("999")
+    # Шаг 5: Вводим текст "Pro"
+    input_field.send_keys("Pro")
 finally:
-    # Закрываемс браузер
+    # Закрываем браузер
     driver.quit()
