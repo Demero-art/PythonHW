@@ -8,11 +8,11 @@ driver = webdriver.Firefox()
 driver.get("http://the-internet.herokuapp.com/entry_ad")
 
 try:
-    # 2 Очень сильно жду появления модального окна T____T
+    # 2 Ожидание модального окна
     WebDriverWait(driver, 10).until(
         EC.visibility_of_element_located((By.ID, "modal")))
 
-    # 3: Наконец-то жму на кнопку Close =__=
+    # 3: жму на кнопку Close
     close_button = (driver.find_element
                     (By.XPATH, "//p[contains(text(), 'Close')]"))
     close_button.click()
