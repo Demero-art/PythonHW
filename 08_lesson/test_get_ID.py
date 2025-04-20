@@ -1,34 +1,30 @@
 import requests
 
-# ПОДСТАВИТЬ ДАННЫЕ
-TOKEN = "?"
-BASE_URL = "?"
+TOKEN = "ПОДСТАВИТЬ ТОКЕН"
+BASE_URL = "ПОДСТАВИТЬ URL"
 
-# 1. Создаем проект "Деревня котов"
-create_response = requests.post(
-    f"{BASE_URL}/projects",
-    json={"title": "Деревня котов"},
-    headers={
-        "Authorization": f"Bearer {TOKEN}",
-        "Content-Type": "application/json"
-    }
-)
 
-# Проверяем успешность создания
-if create_response.status_code == 200:
+def test_create_and_get_project():
+    # 1. Тест создания проекта
+    create_response = requests.post(
+        f"{BASE_URL}/projects",
+        json={"title": "Деревня котов"},
+        headers={
+            "Authorization": f"Bearer {TOKEN}",
+            "Content-Type": "application/json"
+        }
+    )
+
+    assert create_response.status_code == 201, "Ошибка создания проекта"
     project_id = create_response.json()["id"]
-    print(f"Проект создан успешно. ID: {project_id}")
 
-    # 2. Получаем проект по ID
+    # 2. Тест получения проекта
     get_response = requests.get(
         f"{BASE_URL}/projects/{project_id}",
         headers={"Authorization": f"Bearer {TOKEN}"}
     )
 
-    # Проверяем успешность получения
-    if get_response.status_code == 200:
-        print("Данные проекта:", get_response.json())
-    else:
-        print(f"Ошибка получения проекта: {get_response.status_code}")
-else:
-    print(f"Ошибка создания проекта: {create_response.status_code}")
+    assert get_response.status_code == 200, "Ошибка получения проекта"
+
+
+test_create_and_get_project()

@@ -1,21 +1,20 @@
 import requests
 
-# ПОДСТАВИТЬ ДАННЫЕ
-TOKEN = "?"
-BASE_URL = "?"
+# Данные
+TOKEN = "TOKEN"
+BASE_URL = "URL"
 
-headers = {
-    "Authorization": f"Bearer {TOKEN}",
-    "Content-Type": "application/json"
-}
 
-new_project = {
-    "title": "Деревня гусей"
-}
+def test_project_creation():
+    # Отправляем запрос на создание проекта
+    resp = requests.post(
+        f"{BASE_URL}/projects",
+        json={"title": "Деревня гусей"},
+        headers={
+            "Authorization": f"Bearer {TOKEN}",
+            "Content-Type": "application/json"
+        }
+    )
 
-response = requests.post(f"{BASE_URL}/projects", json=new_project, headers=headers)
-
-if response.status_code == 200:
-    print("Проект создан успешно")
-else:
-    print("Ошибка создания проекта")
+    # Проект создался
+    assert resp.status_code == 201

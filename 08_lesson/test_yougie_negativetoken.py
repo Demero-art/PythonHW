@@ -1,21 +1,34 @@
 import requests
 
-# ПОДСТАВИТЬ ДАННЫЕ В URL
-TOKEN = "NO TOKEN"
-BASE_URL = "?"
+# Данные
+TOKEN = "NO TOKEN" #Нет токена
+BASE_URL = "подставить URL"
 
-headers = {
-    "Authorization": f"Bearer {TOKEN}",
-    "Content-Type": "application/json"
-}
 
-new_project = {
-    "title": "Деревня гусей"
-}
+def test_create_and_rename_project():
+    # 1. Создаём проект
+    create_resp = requests.post(
+        f"{BASE_URL}/projects",
+        json={"title": "Деревня котов"},
+        headers={
+            "Authorization": f"Bearer {TOKEN}",
+            "Content-Type": "application/json"
+        }
+    )
+# Проверка создания
+    assert create_resp.status_code == 201
 
-response = requests.post(f"{BASE_URL}/projects", json=new_project, headers=headers)
+# Получаем ID проекта
+    PROJECT_ID = create_resp.json()["id"]
 
-if response.status_code == 200:
-    print("Проект создан успешно")
-else:
-    print("Ошибка создания проекта")
+# Переименовываем проект
+    rename_resp = requests.put(
+        f"{BASE_URL}/projects/{PROJECT_ID}",
+        json={"title": "Город енотов"},
+        headers={
+            "Authorization": f"Bearer {TOKEN}",
+            "Content-Type": "application/json"
+        }
+    )
+# Проверка переименования
+    assert rename_resp.status_code == 201
