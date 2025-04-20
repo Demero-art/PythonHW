@@ -24,7 +24,7 @@ def test_create_and_get_project():
         headers={"Authorization": f"Bearer {TOKEN}"}
     )
 
-    assert get_response.status_code == 200, "Ошибка получения проекта"
+    assert get_response.status_code == 201, "Ошибка получения проекта"
 
 
 test_create_and_get_project()
