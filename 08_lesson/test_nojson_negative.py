@@ -9,7 +9,7 @@ def test_project_creation():
     # Отправляем запрос на создание проекта
     resp = requests.post(
         f"{BASE_URL}/projects",
-        json={"МЯУ МЯУ МЯУ МЯУ"},
+        json={"wrong_field" : "test"},
         headers={
             "Authorization": f"Bearer {TOKEN}",
             "Content-Type": "application/json"
@@ -17,4 +17,4 @@ def test_project_creation():
     )
 
     # Проект создался
-    assert resp.status_code == 201
+    assert resp.status_code >= 400

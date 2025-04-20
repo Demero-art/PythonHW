@@ -31,4 +31,4 @@ def test_create_and_rename_project():
         }
     )
     # Проверка переименования
-    assert rename_resp.status_code == 201
+    assert rename_resp.status_code == 200

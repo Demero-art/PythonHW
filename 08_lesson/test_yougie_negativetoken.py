@@ -16,7 +16,7 @@ def test_create_and_rename_project():
         }
     )
 # Проверка создания
-    assert create_resp.status_code == 201
+    assert create_resp.status_code >= 400
 
 # Получаем ID проекта
     PROJECT_ID = create_resp.json()["id"]
@@ -31,4 +31,4 @@ def test_create_and_rename_project():
         }
     )
 # Проверка переименования
-    assert rename_resp.status_code == 201
+    assert rename_resp.status_code == 404
