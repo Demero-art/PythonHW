@@ -1,8 +1,8 @@
 import requests
 
 # Данные
-TOKEN = "lu3Of0JexlVF9gX0aX0-dTJ1PTedVeCyUgO6mSKNCl-bgUvmkUk5Lo0UdpnftO7n"
-BASE_URL = "https://ru.yougile.com/api-v2"
+TOKEN = "TOKEN"
+BASE_URL = "URL"
 
 
 def test_create_and_rename_project():
